@@ -2,12 +2,12 @@ Webcam Security Research Toolkit
 Overview
 This toolkit contains two PowerShell scripts designed for security researchers and scam baiters to explore webcam access controls and user behavior in controlled, authorized environments. The scripts are:
 
-Enum-Cam.ps1: A script to block webcam access by terminating webcam-related processes (e.g., Zoom, Windows Camera) without requiring administrative privileges. It simulates software-level webcam restrictions for testing purposes.
-lock.ps1: A script that embeds Python code to force webcam activation by repeatedly prompting the user via a GUI (using tkinter) until the webcam is opened. It supports Windows, Linux, and macOS, and is designed to study user responses to forced access prompts.
+Enum-Cam.ps1: A script to block webcam access by terminating webcam-related processes (e.g., Zoom, Windows Camera) without requiring administrative privileges. It simulates software-level webcam restrictions for testing purposes.This tool can enumerate cam devices within the system and can enable/disable the cam functionality.
+Cam-Forcer.ps1: A script that embeds Python code to force webcam activation by repeatedly prompting the user via a GUI (using tkinter) until the webcam is opened. It supports Windows, Linux, and macOS, and is designed to study user responses to forced access prompts.It is great for scam baiting where if you want to turn on cam the script loops the permission to access the cam until the user gives permisssion.
 
 Note: These scripts are for educational and authorized security research purposes only. Unauthorized use to interfere with systems, networks, or user privacy is illegal and unethical.
 Features
-CamLocker.ps1
+Enum-Cam.ps1
 
 List Webcam Processes: Displays running processes that may access the webcam (e.g., WindowsCamera, Zoom, Skype).
 Lock Webcam Access: Terminates known webcam-related processes to prevent applications from using the webcam.
@@ -15,7 +15,7 @@ Test Webcam Access: Checks if the webcam is still accessible by attempting to la
 Non-Admin Operation: Runs without elevated permissions, making it suitable for user-level testing.
 Interactive Menu: Provides a command-line interface to select actions.
 
-lock.ps1
+Cam-Forcer.ps1
 
 Forced Webcam Activation: Uses a tkinter GUI to repeatedly prompt the user to enable the webcam until they comply or the script is terminated.
 Cross-Platform Support: Opens the default camera application on:
@@ -58,7 +58,7 @@ Run in a PowerShell prompt and confirm with Y if prompted.
 
 
 
-Python Setup (for lock.ps1):
+Python Setup (for Cam-Forcer.ps1):
 Install Python 3.x if not already present (download from python.org).
 Ensure tkinter is available:
 Windows/macOS: Typically included with Python.
@@ -74,11 +74,11 @@ Save both scripts in the same directory for ease of use.
 
 
 Usage
-CamLocker.ps1
+Enum-Cam.ps1
 
 Run the Script:
 Open PowerShell (no admin rights needed):cd C:\Users\DELL\Documents\Python-Projects\CAM-Locker
-.\CamLocker.ps1
+.\Enum-Cam.ps1
 
 
 
@@ -109,11 +109,11 @@ Use option 3 to check if the block is effective.
 
 
 
-lock.ps1
+Cam-Forcer.ps1
 
 Run the Script:
 Open PowerShell:cd C:\Users\DELL\Documents\Python-Projects\CAM-Locker
-.\lock.ps1
+.\Cam-Forcer.ps1
 
 
 Ensure Python is installed and accessible via the python command.
@@ -134,13 +134,13 @@ Test with different applications (e.g., Zoom, Skype) to observe behavior after f
 
 Technical Details
 
-CamLocker.ps1:
+Enum-Cam.ps1:
 Uses Get-Process and Stop-Process to manage webcam-related processes (WindowsCamera, Zoom, ms-teams, etc.).
 Monitors a predefined list of processes, customizable via the $webcamProcesses array.
 Tests webcam access by attempting to launch the Windows Camera app.
 
 
-lock.ps1:
+Cam-Forcer.ps1:
 Embeds Python code executed via PowerShell’s python command.
 Uses tkinter for GUI prompts and subprocess to launch OS-specific camera applications.
 Implements a loop to persistently prompt the user until the camera is opened.
@@ -150,7 +150,7 @@ Handles cross-platform differences with platform.system() checks.
 
 Troubleshooting
 
-CamLocker.ps1:
+Enum-Cam.ps1:
 No Webcam Processes Found:
 Add relevant process names to the $webcamProcesses array if your webcam application isn’t listed.
 Run Get-Process | Where-Object { $_.MainWindowTitle -like "*camera*" } to identify other processes.
@@ -163,7 +163,7 @@ For hardware-level disabling, use an admin-based script (available in earlier ve
 
 
 
-lock.ps1:
+Cam-Forcer.ps1:
 Python Not Found:
 Ensure Python is installed and added to the system PATH (python --version should work).
 Update the script to use python3 if that’s the command on your system (e.g., Linux).
@@ -208,12 +208,12 @@ lock.ps1 relies on user interaction and OS-specific camera apps, which may not c
 
 Limitations
 
-CamLocker.ps1:
+Enum-Cam.ps1:
 Only affects predefined processes; other applications may access the webcam.
 Less secure than hardware-level disabling (requires admin privileges).
 
 
-lock.ps1:
+Cam-Forcer.ps1:
 Requires Python and tkinter, adding setup complexity.
 May not force camera access if the default camera app is unavailable or blocked.
 Persistent prompting may be bypassed by closing the script or application.
@@ -230,7 +230,7 @@ Disclaimer
 This toolkit is provided for educational and authorized security research purposes only. The creators are not responsible for any misuse or unauthorized use. Always adhere to legal and ethical guidelines when conducting security research.
 Acknowledgments
 
-CamLocker.ps1: Built using PowerShell process management cmdlets.
-lock.ps1: Utilizes Python’s tkinter and subprocess for cross-platform camera activation.
+Enum-Cam.ps1: Built using PowerShell process management cmdlets.
+Cam-Forcer.ps1: Utilizes Python’s tkinter and subprocess for cross-platform camera activation.
 Inspired by the need to explore webcam security in controlled research environments, complementing tools like the Google Dorking Educational Website.
 
