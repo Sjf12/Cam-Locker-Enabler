@@ -2,7 +2,7 @@ Webcam Security Research Toolkit
 Overview
 This toolkit contains two PowerShell scripts designed for security researchers and scam baiters to explore webcam access controls and user behavior in controlled, authorized environments. The scripts are:
 
-CamLocker.ps1: A script to block webcam access by terminating webcam-related processes (e.g., Zoom, Windows Camera) without requiring administrative privileges. It simulates software-level webcam restrictions for testing purposes.
+Enum-Cam.ps1: A script to block webcam access by terminating webcam-related processes (e.g., Zoom, Windows Camera) without requiring administrative privileges. It simulates software-level webcam restrictions for testing purposes.
 lock.ps1: A script that embeds Python code to force webcam activation by repeatedly prompting the user via a GUI (using tkinter) until the webcam is opened. It supports Windows, Linux, and macOS, and is designed to study user responses to forced access prompts.
 
 Note: These scripts are for educational and authorized security research purposes only. Unauthorized use to interfere with systems, networks, or user privacy is illegal and unethical.
