@@ -3,6 +3,7 @@ Overview
 This toolkit contains two PowerShell scripts designed for security researchers and scam baiters to explore webcam access controls and user behavior in controlled, authorized environments. The scripts are:
 
 Enum-Cam.ps1: A script to block webcam access by terminating webcam-related processes (e.g., Zoom, Windows Camera) without requiring administrative privileges. It simulates software-level webcam restrictions for testing purposes.This tool can enumerate cam devices within the system and can enable/disable the cam functionality.
+
 Cam-Forcer.ps1: A script that embeds Python code to force webcam activation by repeatedly prompting the user via a GUI (using tkinter) until the webcam is opened. It supports Windows, Linux, and macOS, and is designed to study user responses to forced access prompts.It is great for scam baiting where if you want to turn on cam the script loops the permission to access the cam until the user gives permisssion.
 
 Note: These scripts are for educational and authorized security research purposes only. Unauthorized use to interfere with systems, networks, or user privacy is illegal and unethical.
